@@ -5,9 +5,9 @@ def add_task():
         if size > 0:
             break
 
-    usr_tasks = []
-    task_description = []
-    task_deadline = []
+    usr_tasks = list()
+    task_description = list()
+    task_deadline = list()
 
     for i in range(1, size + 1):
         task = input("\n\tEnter task {}: ".format(i))
@@ -41,6 +41,9 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
             completed_task.append(usr_tsk[i])
             completed_task_desp.append(tsk_desp[i])
             completed_task_deadline.append(tsk_dedline[i])
+            usr_tsk.pop(i)
+            tsk_desp.pop(i)
+            tsk_dedline.pop(i)
         else:
             i += 1
 
@@ -58,10 +61,12 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
 
     return completed_task, completed_task_desp, completed_task_deadline, usr_tsk, tsk_desp, tsk_dedline
 
+
+
 # Function to allow users to update task details
-def update_task_details(completed_task, completed_task_desp, completed_task_deadline, usr_tsk, tsk_desp, tsk_dedline):
+def update_task_details(usr_tsk, tsk_desp, tsk_dedline):
     print("\n\tUPDATE DETAILS FOR ORIGINAL TASKS.............................")
-    for i in range(len(usr_tsk)):
+    for i in range(len(usr_tsk):
         ele = input("\n\tDo you want to update task details for the task {}? (y/n): ".format(usr_tsk[i]))
         ele = ele.lower()
         if ele == "y":
@@ -74,8 +79,6 @@ def update_task_details(completed_task, completed_task_desp, completed_task_dead
             ele = input("\n\tEnter new task deadline for the task: ")
             tsk_dedline[i] = ele
 
-    size = len(usr_tsk)
-    task_status_check(usr_tsk, tsk_desp, tsk_dedline)
 
 # Main program
 val = add_task()
