@@ -85,6 +85,23 @@ def update_orgtask_details(usr_tsk, tsk_desp, tsk_dedline):
 
 # Function to display the final results
 def display_results(completed_task, completed_task_desp, completed_task_deadline, usr_tsk, tsk_desp, tsk_dedline):
+    print("\n\tREMOVE TASKS WHICH ARE NOT NEEDED..................................")
+    print("\n\tOriginal Tasks")
+    for i in range(len(usr_tsk)):
+        ele = input("\n\tDo you want to remove task ( {} ) (y/n)?: ".format(usr_tsk[i]))
+        if ele == 'y':
+            usr_tsk.pop(i)
+            tsk_desp.pop(i)
+            tsk_dedline.pop(i)
+    
+    print("\n\tCompleted Tasks")
+    for i in range(len(usr_tsk)):
+        ele = input("\n\tDo you want to remove task ( {} ) (y/n)?: ".format(usr_tsk[i]))
+        if ele == 'y':
+            usr_tsk.pop(i)
+            tsk_desp.pop(i)
+            tsk_dedline.pop(i)
+
     print("\n\tORIGINAL TASK LIST..................................................")
     for i in range(len(usr_tsk)):
         print("\n\tTask{}:\t{}".format(i + 1, usr_tsk[i]))
