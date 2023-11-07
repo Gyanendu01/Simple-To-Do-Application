@@ -13,10 +13,10 @@ def add_task():
         task = input("\n\tEnter task {}: ".format(i))
         usr_tasks.append(task)
 
-        description = input("\n\tEnter some description for the Task {}:\n\t".format(i))
+        description = input("\tEnter some description for the Task {}:\n\t".format(i))
         task_description.append(description)
 
-        deadline = input("\n\tEnter Dead-line date (dd/mm/yy) for Task {}:\n\t".format(i))
+        deadline = input("\tEnter Dead-line date (dd/mm/yy) for Task {}:\n\t".format(i))
         task_deadline.append(deadline)
 
     return usr_tasks, task_description, task_deadline
@@ -35,8 +35,11 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
     completed_task_deadline = []
     i = 0
     while i < len(usr_tsk):
-        ele = input("\n\tHave you completed the task {}? (y/n): ".format(usr_tsk[i]))
-        ele = ele.lower()
+        while True:
+            ele = input("\n\tHave you completed the task {}? (y/n): ".format(usr_tsk[i]))
+            ele = ele.lower()
+            if ele in ['y','n']:
+                break
         if ele == "y":
             completed_task.append(usr_tsk[i])
             completed_task_desp.append(tsk_desp[i])
@@ -66,7 +69,7 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
 # Function to allow users to update task details
 def update_task_details(usr_tsk, tsk_desp, tsk_dedline):
     print("\n\tUPDATE DETAILS FOR ORIGINAL TASKS.............................")
-    for i in range(len(usr_tsk):
+    for i in range(len(usr_tsk)):
         ele = input("\n\tDo you want to update task details for the task {}? (y/n): ".format(usr_tsk[i]))
         ele = ele.lower()
         if ele == "y":
