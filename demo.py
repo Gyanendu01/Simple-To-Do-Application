@@ -36,7 +36,7 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
     i = 0
     while i < len(usr_tsk):
         while True:
-            ele = input("\n\tHave you completed the task {}? (y/n): ".format(usr_tsk[i]))
+            ele = input("\n\tHave you completed the task( {} )? (y/n): ".format(usr_tsk[i]))
             ele = ele.lower()
             if ele in ['y','n']:
                 break
@@ -66,28 +66,43 @@ def task_status_check(usr_tsk, tsk_desp, tsk_dedline):
 
 
 
-# Function to allow users to update task details
+# Function to allow users to update task details 
 def update_orgtask_details(usr_tsk, tsk_desp, tsk_dedline):
     print("\n\tUPDATE DETAILS FOR ORIGINAL TASKS.............................")
     for i in range(len(usr_tsk)):
         ele = input("\n\tDo you want to update task details for the task {}? (y/n): ".format(usr_tsk[i]))
         ele = ele.lower()
         if ele == "y":
-            ele = input("\n\tEnter task details for the task: ")
+            ele = input("\tEnter task details for the task( {} ): ".format(usr_tsk[i]))
             tsk_desp[i] = ele
 
         ele = input("\n\tDo you want to update task deadline for the task {}? (y/n): ".format(usr_tsk[i]))
         ele = ele.lower()
         if ele == "y":
-            ele = input("\n\tEnter new task deadline for the task: ")
+            ele = input("\tEnter new task deadline for the task( {} ): ".format(usr_tsk[i]))
             tsk_dedline[i] = ele
+   
+
+# Function to display the final results
+def display_results(completed_task, completed_task_desp, completed_task_deadline, usr_tsk, tsk_desp, tsk_dedline):
+    print("\n\tORIGINAL TASK LIST..................................................")
     for i in range(len(usr_tsk)):
-        print("\n\tTask{}:\t{} ".format(i+1,usr_tsk[i]))
-        print("\tTask Description:\t{} ".format(tsk_desp[i]))
-        print("\n\tTask Deadline:\t{} ".format(tsk_dedline[i]))
+        print("\n\tTask{}:\t{}".format(i + 1, usr_tsk[i]))
+        print("\tTask Description:\t{}".format(tsk_desp[i]))
+        print("\tTask Deadline:\t{}".format(tsk_dedline[i]))
+
+    print("\n\tCOMPLETED TASK LIST..................................................")
+    for i in range(len(completed_task)):
+        print("\n\tTask{}:\t{}".format(i + 1, completed_task[i]))
+        print("\tTask Description:\t{}".format(completed_task_desp[i]))
+        print("\tTask Deadline:\t{}".format(completed_task_deadline[i]))
+
+
+
 
 # Main program
 val = add_task()
 disp_task_details(val[0], val[1], val[2])
-st = task_status_check(val[0], val[1], val[2])
-update_orgtask_details(st[0], st[1], st[2])
+data = task_status_check(val[0], val[1], val[2])
+update_orgtask_details(val[0], val[1], val[2])
+display_results(data[0],data[1],data[2],data[3],data[4],data[5])
