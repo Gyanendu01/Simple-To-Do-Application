@@ -102,7 +102,11 @@ def display_results(completed_task, completed_task_desp, completed_task_deadline
 
 # Main program
 val = add_task()
+print("\n","="*8,"TASK DETAILS","="*8)
 disp_task_details(val[0], val[1], val[2])
+print("\n","="*8,"TASK STATUS","="*8)
 data = task_status_check(val[0], val[1], val[2])
+print("\n","="*8,"TASK UPDATION","="*8)
 update_orgtask_details(val[0], val[1], val[2])
+print("\n","="*8,"TASK DETAILS","="*8,)
 display_results(data[0],data[1],data[2],data[3],data[4],data[5])
